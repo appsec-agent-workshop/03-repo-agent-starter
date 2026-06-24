@@ -5,8 +5,9 @@ This is intentionally small and incomplete. Use it to teach a repository-level a
 ## Components
 
 - `src/routes/search.ts`: search route and preference helper used by the sample findings.
-- `alerts/codeql-sql-injection.json`: synthetic CodeQL alert for the search route.
-- `alerts/dependabot-lodash.json`: synthetic Dependabot alert for the vulnerable lodash dependency.
+- `evidence/live/`: generated live alert evidence from read-only GitHub REST calls.
+- `alerts/codeql-sql-injection.json`: fallback fixture for the CodeQL alert when live API access is unavailable.
+- `alerts/dependabot-lodash.json`: fallback fixture for the lodash Dependabot alerts when live API access is unavailable.
 - `test/search.test.ts`: positive-path tests only.
 
 ## Current assumptions

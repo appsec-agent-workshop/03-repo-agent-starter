@@ -28,7 +28,9 @@ Look for:
 - `.github/codeql/`
 - `.github/dependabot.yml`
 - `.github/workflows/`
+- `evidence/live/`
 - `alerts/`
+- `scripts/fetch-security-alerts.sh`
 - dependency manifests
 - CodeQL configuration
 - Dependabot configuration
@@ -44,11 +46,12 @@ Treat stale, missing, or timed-out CodeQL as missing evidence that caps confiden
 For each finding:
 
 1. Identify whether it is Dependabot, CodeQL, or another source.
-2. Extract deterministic facts from `alerts/`, manifests, source, tests, CODEOWNERS, and docs.
-3. Separate repository facts from assumptions.
-4. Name missing evidence and how it caps confidence.
-5. Choose exactly one route: `fix-now`, `campaign-candidate`, `needs-reachability-analysis`, `needs-codeql-timeout-investigation`, or `human-escalation`.
-6. Recommend a human-reviewed next action.
+2. Extract deterministic facts from live evidence in `evidence/live/` when available; otherwise use fallback fixtures in `alerts/`.
+3. Correlate the alert evidence with manifests, source, tests, CODEOWNERS, docs, and security configuration.
+4. Separate repository facts from assumptions.
+5. Name missing evidence and how it caps confidence.
+6. Choose exactly one route: `fix-now`, `campaign-candidate`, `needs-reachability-analysis`, `needs-codeql-timeout-investigation`, or `human-escalation`.
+7. Recommend a human-reviewed next action.
 
 For supply-chain findings, check package name, direct/transitive status, manifest path, vulnerable range, patched range, runtime use, tests, owner, and whether there are related alerts.
 

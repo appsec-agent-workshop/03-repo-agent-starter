@@ -20,6 +20,7 @@ alerts/dependabot-lodash.json
 docs/architecture.md
 CODEOWNERS
 package.json
+scripts/fetch-security-alerts.sh
 src/routes/search.ts
 test/search.test.ts
 ```
@@ -40,6 +41,23 @@ npm run audit
 
 `npm run audit` is expected to report a high-severity lodash advisory. GitHub Dependabot may show multiple related lodash alerts for the same pinned version; triage them as a supply-chain finding with a shared package/fix pattern. The code imports `lodash/merge`, but the high-severity advisory still needs function-level reachability review rather than assuming the shown helper proves reachability.
 
+## Fetch live alert evidence
+
+Use live GitHub security alerts as the primary evidence source:
+
+```bash
+bash scripts/fetch-security-alerts.sh
+```
+
+The script performs read-only `gh api` requests and writes:
+
+```text
+evidence/live/code-scanning-alerts.json
+evidence/live/dependabot-alerts.json
+```
+
+The committed files in `alerts/` are fallback fixtures for dry runs, offline work, or participants without security-alert API access.
+
 ## Exercise
 
 Ask Copilot:
@@ -47,10 +65,12 @@ Ask Copilot:
 ```text
 Use the repo-appsec-reviewer agent to triage the actual findings in this repository:
 
-1. alerts/dependabot-lodash.json
-2. alerts/codeql-sql-injection.json
+1. evidence/live/dependabot-alerts.json
+2. evidence/live/code-scanning-alerts.json
 
-Read docs/architecture.md, CODEOWNERS, package.json, package-lock.json, src/routes/search.ts, test/search.test.ts, .github/dependabot.yml, and .github/codeql/codeql-config.yml.
+If live API access is unavailable, use the fixture files in alerts/ instead.
+
+Read docs/architecture.md, CODEOWNERS, package.json, package-lock.json, src/routes/search.ts, test/search.test.ts, .github/dependabot.yml, .github/codeql/codeql-config.yml, and scripts/fetch-security-alerts.sh.
 
 For each finding:
 - separate facts from assumptions
@@ -65,6 +85,7 @@ Do not make code changes yet.
 ## Done when
 
 - The repo-level agent ties both findings to concrete files in this repository.
+- Live evidence from `evidence/live/` is used when available; fixture JSON is clearly treated as fallback.
 - The lodash alerts are treated as a supply-chain finding with package, manifest, owner, tests, and upgrade path.
 - The agent does not claim lodash exploitability only because lodash is imported; it identifies missing reachability evidence for the specific advisory.
 - The SQL query alert is treated as a CodeQL finding with source, sink, validation gaps, and fix path.
