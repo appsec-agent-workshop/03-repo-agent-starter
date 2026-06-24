@@ -1,0 +1,25 @@
+{
+  "source": "codeql",
+  "repository": "appsec-agent-workshop/demo-api",
+  "alert_number": 3102,
+  "state": "open",
+  "severity": "high",
+  "rule": {
+    "id": "js/sql-injection",
+    "name": "Database query built from user-controlled sources"
+  },
+  "location": {
+    "path": "src/routes/search.ts",
+    "start_line": 23,
+    "end_line": 25
+  },
+  "detected_at": "2026-06-24T09:05:00Z",
+  "known_context": {
+    "autofix": "available",
+    "security_campaign": "not_assigned",
+    "tests": "normal search query test exists, malicious input tests missing",
+    "owner": "data-services",
+    "codeql_status": "current",
+    "notes": "The route reads req.query.term and passes a constructed SQL string to mysql2 Pool.query."
+  }
+}

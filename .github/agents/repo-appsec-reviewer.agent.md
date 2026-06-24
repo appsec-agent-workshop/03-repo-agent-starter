@@ -25,7 +25,10 @@ Look for:
 - `README.md`
 - `.github/copilot-instructions.md`
 - `AGENTS.md`
+- `.github/codeql/`
+- `.github/dependabot.yml`
 - `.github/workflows/`
+- `alerts/`
 - dependency manifests
 - CodeQL configuration
 - Dependabot configuration
@@ -36,16 +39,20 @@ If this context is missing, call that out instead of inventing it.
 
 Treat stale, missing, or timed-out CodeQL as missing evidence that caps confidence. Never treat absent analysis as proof of low risk.
 
-## TODO
+## Finding triage workflow
 
-Customize this agent for this repository:
+For each finding:
 
-- What are the trust boundaries?
-- Which routes require authentication?
-- What authorization checks are mandatory?
-- Which tests must exist for security-sensitive changes?
-- How should stale CodeQL, missing tests, and unknown runtime exposure cap confidence?
-- Who owns security review?
+1. Identify whether it is Dependabot, CodeQL, or another source.
+2. Extract deterministic facts from `alerts/`, manifests, source, tests, CODEOWNERS, and docs.
+3. Separate repository facts from assumptions.
+4. Name missing evidence and how it caps confidence.
+5. Choose exactly one route: `fix-now`, `campaign-candidate`, `needs-reachability-analysis`, `needs-codeql-timeout-investigation`, or `human-escalation`.
+6. Recommend a human-reviewed next action.
+
+For supply-chain findings, check package name, direct/transitive status, manifest path, vulnerable range, patched range, runtime use, tests, owner, and whether there are related alerts.
+
+For CodeQL findings, check source, sink, route exposure, authorization context, tests, Autofix availability, and whether the CodeQL run is current.
 
 ## Human approval
 

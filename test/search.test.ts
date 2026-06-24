@@ -1,4 +1,4 @@
-import { buildSearchQuery } from "../src/routes/search";
+import { buildSearchQuery, mergeUserPreferences } from "../src/routes/search";
 import { describe, expect, it } from "vitest";
 
 describe("buildSearchQuery", () => {
@@ -7,4 +7,17 @@ describe("buildSearchQuery", () => {
   });
 
   // TODO: Add malicious input tests during the workshop.
+});
+
+describe("mergeUserPreferences", () => {
+  it("keeps default preferences when the user provides an empty object", () => {
+    expect(mergeUserPreferences("{}")).toEqual({
+      theme: "dark",
+      alerts: {
+        sort: "severity",
+      },
+    });
+  });
+
+  // TODO: Add a prototype-pollution regression test during the workshop.
 });

@@ -3,12 +3,23 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "audit": "npm audit --audit-level=low",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "express": "^5.2.1",
+    "lodash": "4.17.20",
+    "mysql2": "^3.15.3"
+  },
   "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/lodash": "^4.17.20",
     "@types/node": "^22.15.0",
     "typescript": "^5.8.0",
     "vitest": "^3.2.0"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
   }
 }

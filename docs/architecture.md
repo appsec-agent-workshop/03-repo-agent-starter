@@ -1,19 +1,24 @@
 # Demo API architecture
 
-This is intentionally small and incomplete. Use it to teach a repository-level agent what context it should look for.
+This is intentionally small and incomplete. Use it to teach a repository-level agent how to apply repository context to concrete Dependabot and CodeQL findings.
 
 ## Components
 
-- `src/routes/search.ts`: search route used by the sample CodeQL alert.
-- `test/search.test.ts`: placeholder tests.
+- `src/routes/search.ts`: search route and preference helper used by the sample findings.
+- `alerts/codeql-sql-injection.json`: synthetic CodeQL alert for the search route.
+- `alerts/dependabot-lodash.json`: synthetic Dependabot alert for the vulnerable lodash dependency.
+- `test/search.test.ts`: positive-path tests only.
 
 ## Current assumptions
 
 - The API is expected to be authenticated.
 - Authorization requirements are not documented yet.
-- Database query construction rules are not documented yet.
-- Runtime exposure is unknown.
+- The search route reads `req.query.term`.
+- Database queries must use parameters or a query builder, but this is not enforced yet.
+- User preference JSON may come from authenticated users.
+- Runtime exposure is authenticated but authorization behavior is unknown.
+- Malicious-input and prototype-pollution regression tests are missing.
 
 ## Workshop task
 
-Update this document or the repo-level agent with the facts a real team would need before making a triage recommendation.
+Use the repo-level agent to triage both sample findings. The goal is not to fix the code during this lab; it is to produce a grounded human-reviewed recommendation with missing evidence, confidence, and next action.

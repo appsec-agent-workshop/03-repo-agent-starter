@@ -1,0 +1,4 @@
+name: workshop-codeql-config
+
+queries:
+  - uses: security-and-quality
