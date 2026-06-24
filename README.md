@@ -17,6 +17,8 @@ src/routes/search.ts
 test/search.test.ts
 ```
 
+If you want to typecheck or run the sample test during dry run, run `npm install` first.
+
 ## Exercise
 
 Ask Copilot:
