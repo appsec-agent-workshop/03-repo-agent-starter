@@ -17,7 +17,7 @@ This is intentionally small and incomplete. Use it to teach a repository-level a
 - Database queries must use parameters or a query builder, but this is not enforced yet.
 - User preference JSON may come from authenticated users.
 - Runtime exposure is authenticated but authorization behavior is unknown.
-- Malicious-input and prototype-pollution regression tests are missing.
+- Malicious-input tests and lodash advisory reachability checks are missing.
 
 ## Workshop task
 

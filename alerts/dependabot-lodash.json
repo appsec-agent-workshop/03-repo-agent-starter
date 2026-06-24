@@ -1,6 +1,6 @@
 {
   "source": "dependabot",
-  "repository": "appsec-agent-workshop/demo-api",
+  "repository": "appsec-agent-workshop/03-repo-agent-starter",
   "alert_number": 3101,
   "state": "open",
   "severity": "high",
@@ -19,11 +19,11 @@
   "detected_at": "2026-06-24T09:00:00Z",
   "known_context": {
     "dependency_update_pr": "not_opened",
-    "tests": "unit tests exist, prototype-pollution regression tests missing",
+    "tests": "unit tests exist, lodash advisory reachability checks missing",
     "owner": "data-services",
-    "production_exposure": "authenticated API route parses user preference JSON",
+    "production_exposure": "lodash is imported by the repository, but use of the vulnerable advisory sink is unproven",
     "codeql_status": "current",
-    "related_code": "src/routes/search.ts mergeUserPreferences",
+    "related_code": "src/routes/search.ts imports lodash/merge; this does not prove reachability for the high-severity lodash advisory",
     "remote_validation": "GitHub Dependabot opens multiple lodash alerts for package-lock.json after this template is pushed to main."
   }
 }

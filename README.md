@@ -38,7 +38,7 @@ npm test
 npm run audit
 ```
 
-`npm run audit` is expected to report a high-severity lodash advisory. GitHub Dependabot may show multiple related lodash alerts for the same pinned version; triage them as a supply-chain finding with a shared package/fix pattern.
+`npm run audit` is expected to report a high-severity lodash advisory. GitHub Dependabot may show multiple related lodash alerts for the same pinned version; triage them as a supply-chain finding with a shared package/fix pattern. The code imports `lodash/merge`, but the high-severity advisory still needs function-level reachability review rather than assuming the shown helper proves reachability.
 
 ## Exercise
 
@@ -66,6 +66,7 @@ Do not make code changes yet.
 
 - The repo-level agent ties both findings to concrete files in this repository.
 - The lodash alerts are treated as a supply-chain finding with package, manifest, owner, tests, and upgrade path.
+- The agent does not claim lodash exploitability only because lodash is imported; it identifies missing reachability evidence for the specific advisory.
 - The SQL query alert is treated as a CodeQL finding with source, sink, validation gaps, and fix path.
 - Missing ownership/test/runtime facts are explicit and affect confidence.
 - The agent remains read/search only.

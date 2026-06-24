@@ -19,5 +19,5 @@ describe("mergeUserPreferences", () => {
     });
   });
 
-  // TODO: Add a prototype-pollution regression test during the workshop.
+  // TODO: Add a lodash advisory reachability check if code starts using an advisory-specific sink such as _.template.
 });

@@ -1,7 +1,7 @@
 {
   "source": "codeql",
-  "repository": "appsec-agent-workshop/demo-api",
-  "alert_number": 3102,
+  "repository": "appsec-agent-workshop/03-repo-agent-starter",
+  "alert_number": 3201,
   "state": "open",
   "severity": "high",
   "rule": {
@@ -21,6 +21,6 @@
     "owner": "data-services",
     "codeql_status": "current",
     "notes": "The route reads req.query.term and passes a constructed SQL string to mysql2 Pool.query.",
-    "remote_validation": "GitHub CodeQL default setup reports js/sql-injection on src/routes/search.ts line 25 after this template is pushed to main."
+    "remote_validation": "GitHub CodeQL default setup reports js/sql-injection on src/routes/search.ts line 25 after this template is pushed to main. The repo codeql-config.yml is context for the lab; the default query suite detects this rule."
   }
 }
