@@ -6,8 +6,24 @@ out_dir="${2:-evidence/live}"
 
 mkdir -p "$out_dir"
 
-gh api "repos/${repo}/code-scanning/alerts?state=open" > "${out_dir}/code-scanning-alerts.json"
-gh api "repos/${repo}/dependabot/alerts?state=open" > "${out_dir}/dependabot-alerts.json"
+code_tmp="$(mktemp)"
+dependabot_tmp="$(mktemp)"
+trap 'rm -f "$code_tmp" "$dependabot_tmp"' EXIT
+
+rm -f "${out_dir}/code-scanning-alerts.json" "${out_dir}/dependabot-alerts.json"
+
+if ! gh api "repos/${repo}/code-scanning/alerts?state=open" > "$code_tmp"; then
+  echo "Could not fetch code scanning alerts for ${repo}. Use fallback fixtures in alerts/ if API access is unavailable." >&2
+  exit 1
+fi
+
+if ! gh api "repos/${repo}/dependabot/alerts?state=open" > "$dependabot_tmp"; then
+  echo "Could not fetch Dependabot alerts for ${repo}. Use fallback fixtures in alerts/ if API access is unavailable." >&2
+  exit 1
+fi
+
+mv "$code_tmp" "${out_dir}/code-scanning-alerts.json"
+mv "$dependabot_tmp" "${out_dir}/dependabot-alerts.json"
 
 echo "Wrote live read-only alert evidence to ${out_dir}/"
 echo "- ${out_dir}/code-scanning-alerts.json"
