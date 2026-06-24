@@ -31,4 +31,5 @@ Do not make code changes yet.
 
 - The repo-level agent names local architecture assumptions.
 - Missing ownership/test/runtime facts are explicit.
+- Stale, missing, or timed-out CodeQL is treated as missing evidence, not as low risk.
 - The agent remains read/search only.

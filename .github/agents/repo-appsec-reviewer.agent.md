@@ -34,6 +34,8 @@ Look for:
 
 If this context is missing, call that out instead of inventing it.
 
+Treat stale, missing, or timed-out CodeQL as missing evidence that caps confidence. Never treat absent analysis as proof of low risk.
+
 ## TODO
 
 Customize this agent for this repository:
@@ -42,6 +44,7 @@ Customize this agent for this repository:
 - Which routes require authentication?
 - What authorization checks are mandatory?
 - Which tests must exist for security-sensitive changes?
+- How should stale CodeQL, missing tests, and unknown runtime exposure cap confidence?
 - Who owns security review?
 
 ## Human approval
