@@ -38,7 +38,7 @@ npm test
 npm run audit
 ```
 
-`npm run audit` is expected to report a lodash advisory. That is part of the exercise.
+`npm run audit` is expected to report a high-severity lodash advisory. GitHub Dependabot may show multiple related lodash alerts for the same pinned version; triage them as a supply-chain finding with a shared package/fix pattern.
 
 ## Exercise
 
@@ -65,7 +65,7 @@ Do not make code changes yet.
 ## Done when
 
 - The repo-level agent ties both findings to concrete files in this repository.
-- The lodash advisory is treated as a supply-chain finding with package, manifest, owner, tests, and upgrade path.
+- The lodash alerts are treated as a supply-chain finding with package, manifest, owner, tests, and upgrade path.
 - The SQL query alert is treated as a CodeQL finding with source, sink, validation gaps, and fix path.
 - Missing ownership/test/runtime facts are explicit and affect confidence.
 - The agent remains read/search only.

@@ -10,7 +10,7 @@
   },
   "location": {
     "path": "src/routes/search.ts",
-    "start_line": 23,
+    "start_line": 25,
     "end_line": 25
   },
   "detected_at": "2026-06-24T09:05:00Z",
@@ -20,6 +20,7 @@
     "tests": "normal search query test exists, malicious input tests missing",
     "owner": "data-services",
     "codeql_status": "current",
-    "notes": "The route reads req.query.term and passes a constructed SQL string to mysql2 Pool.query."
+    "notes": "The route reads req.query.term and passes a constructed SQL string to mysql2 Pool.query.",
+    "remote_validation": "GitHub CodeQL default setup reports js/sql-injection on src/routes/search.ts line 25 after this template is pushed to main."
   }
 }

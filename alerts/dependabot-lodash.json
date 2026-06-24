@@ -12,9 +12,9 @@
   },
   "advisory": {
     "ghsa_id": "GHSA-35jh-r3h4-6jhm",
-    "summary": "Command Injection in lodash",
+    "summary": "Representative high-severity lodash advisory. This pinned version can produce multiple related Dependabot alerts.",
     "vulnerable_versions": "< 4.17.21",
-    "patched_versions": ">= 4.17.21"
+    "patched_versions": "Use the non-vulnerable version recommended by Dependabot or npm audit for the specific advisory."
   },
   "detected_at": "2026-06-24T09:00:00Z",
   "known_context": {
@@ -23,6 +23,7 @@
     "owner": "data-services",
     "production_exposure": "authenticated API route parses user preference JSON",
     "codeql_status": "current",
-    "related_code": "src/routes/search.ts mergeUserPreferences"
+    "related_code": "src/routes/search.ts mergeUserPreferences",
+    "remote_validation": "GitHub Dependabot opens multiple lodash alerts for package-lock.json after this template is pushed to main."
   }
 }
