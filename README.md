@@ -5,7 +5,7 @@ Use this repository during the workshop section:
 
 ## Goal
 
-Create a team-shared AppSec reviewer agent that can triage real findings in this repository: one supply-chain alert and one CodeQL alert.
+Create a team-shared AppSec reviewer agent that can triage real findings in this repository: one supply-chain finding and one CodeQL alert.
 
 This repository is intentionally vulnerable for the workshop. Do not copy these dependency versions or code patterns into production.
 
@@ -39,7 +39,7 @@ npm test
 npm run audit
 ```
 
-`npm run audit` is expected to report a high-severity lodash advisory. GitHub Dependabot may show multiple related lodash alerts for the same pinned version; triage them as a supply-chain finding with a shared package/fix pattern. The code imports `lodash/merge`, but the high-severity advisory still needs function-level reachability review rather than assuming the shown helper proves reachability.
+`npm run audit` is expected to exit non-zero and report a high-severity lodash advisory. GitHub Dependabot may show multiple related lodash alerts for the same pinned version; triage them as a supply-chain finding with a shared package/fix pattern. The code imports `lodash/merge`, but the high-severity advisory still needs function-level reachability review rather than assuming the shown helper proves reachability.
 
 ## Fetch live alert evidence
 
