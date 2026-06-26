@@ -5,7 +5,7 @@ Use this repository during the workshop section:
 
 ## Goal
 
-Create a team-shared AppSec reviewer agent that can triage real findings in this repository: one supply-chain alert and one CodeQL code scanning alert.
+Create a team-shared AppSec reviewer agent that can triage real findings in this repository: one supply-chain alert and one CodeQL alert.
 
 This repository is intentionally vulnerable for the workshop. Do not copy these dependency versions or code patterns into production.
 
